@@ -1,0 +1,26 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASS=meshmeshmesh
+      - DATABASE_NAME=fastapi
+      - DATABASE_USERNAME=postgres
+      - SECRET_KEY=pai1233213ujanlsjdnoljn3123123e
+      - ALGORITHM=HS256
+      - ACCESS_EXPIRE=30
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=meshmeshmesh
+      - POSTGRES_DB=fastapi
+    
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
